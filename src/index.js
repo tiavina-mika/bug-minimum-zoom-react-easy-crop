@@ -1,19 +1,20 @@
-import React, { useState, useCallback } from 'react'
-import ReactDOM from 'react-dom'
-import Slider from '@material-ui/core/Slider'
-import Cropper from 'react-easy-crop'
-import './styles.css'
+import React, { useState, useCallback } from 'react';
+import ReactDOM from 'react-dom';
+import Slider from '@material-ui/core/Slider';
+import Cropper from 'react-easy-crop';
+import './styles.css';
 
 const App = () => {
-  const [crop, setCrop] = useState({ x: 0, y: 0 })
-  const [zoom, setZoom] = useState(0.5)
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-    console.log(croppedArea, croppedAreaPixels)
-  }, [])
+    console.log(croppedArea, croppedAreaPixels);
+  }, []);
   return (
     <div className="App">
       <div className="crop-container">
         <Cropper
+          minZoom={0.5}
           image="https://img.huffingtonpost.com/asset/5ab4d4ac2000007d06eb2c56.jpeg?cache=sih0jwle4e&ops=1910_1000"
           crop={crop}
           zoom={zoom}
@@ -35,8 +36,8 @@ const App = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
